@@ -1,0 +1,15 @@
+name: 移动公司网上营业厅项目CI流水线
+on: [push]  # 推送代码时触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # 使用GitHub托管的Ubuntu服务器
+    steps:
+      - uses: actions/checkout@v4  # 拉取代码
+      - name: 设置JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: 编译打包
+        run: mvn clean package  # 替换为你的构建命令
